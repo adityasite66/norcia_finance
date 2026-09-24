@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  IN_PROGRESS
+  CLOSED
+  SPAM
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+}
+
+model Lead {
+  id        String     @id @default(cuid())
+  name      String
+  phone     String
+  service   String?
+  message   String?
+  sessionId String?
+  status    LeadStatus @default(NEW)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([createdAt])
+  @@index([status])
+  @@index([service])
+}
+
+model AnalyticsEvent {
+  id        BigInt   @id @default(autoincrement())
+  sessionId String?
+  event     String
+  section   String?
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([sessionId])
+  @@index([event])
+  @@index([section])
+}

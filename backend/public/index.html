@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Norcia Finance Admin</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f4f7fa;color:#10243a}.wrap{width:min(1200px,94%);margin:auto}.top{background:#0d1e2e;color:white;padding:18px 0}.top .wrap{display:flex;justify-content:space-between;align-items:center}.top h1{margin:0;font-size:21px}.btn{border:0;border-radius:8px;padding:10px 15px;font-weight:700;cursor:pointer}.primary{background:#e31a2b;color:#fff}.light{background:#fff;border:1px solid #d8e0e8;color:#10243a}.login{max-width:420px;margin:12vh auto;background:white;padding:32px;border-radius:16px;box-shadow:0 15px 40px #10243a18}.login h2{margin-top:0}.field{margin:14px 0}.field label{display:block;font-size:13px;font-weight:700}.field input{width:100%;padding:12px;border:1px solid #ccd7e1;border-radius:8px;margin-top:6px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:25px 0}.card{background:#fff;padding:22px;border-radius:14px;border:1px solid #e0e7ee}.card b{font-size:28px;display:block}.muted{color:#718195;font-size:13px}.panel{background:#fff;border:1px solid #e0e7ee;border-radius:14px;margin:18px 0;overflow:auto}.panel h3{padding:18px 20px;margin:0;border-bottom:1px solid #e7edf2}.table{width:100%;border-collapse:collapse;min-width:760px}.table th,.table td{padding:12px 14px;border-bottom:1px solid #edf1f4;text-align:left;font-size:13px}.status{padding:5px 8px;border-radius:20px;background:#edf2f6;font-weight:700}.bar{height:9px;background:#edf1f5;border-radius:20px;overflow:hidden}.bar i{display:block;height:100%;background:#e31a2b}.hidden{display:none}@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.grid{grid-template-columns:1fr}.top .wrap{gap:10px}.top h1{font-size:17px}}
+</style>
+</head>
+<body>
+<div id="login-view">
+  <form class="login" id="login-form">
+    <h2>Norcia Finance Admin</h2>
+    <p class="muted">Sign in to view leads and website analytics.</p>
+    <div class="field"><label>Email<input id="email" type="email" required value="admin@norciafinance.in"></label></div>
+    <div class="field"><label>Password<input id="password" type="password" required></label></div>
+    <button class="btn primary" style="width:100%">Sign in</button>
+    <p id="login-error" class="muted"></p>
+  </form>
+</div>
+
+<div id="dashboard" class="hidden">
+<header class="top"><div class="wrap"><h1>Norcia Finance — Admin Dashboard</h1><button id="logout" class="btn light">Logout</button></div></header>
+<main class="wrap">
+  <div class="grid">
+    <div class="card"><span class="muted">Total Visitors</span><b id="uniqueSessions">0</b></div>
+    <div class="card"><span class="muted">Total Leads</span><b id="totalLeads">0</b></div>
+    <div class="card"><span class="muted">New Leads</span><b id="newLeads">0</b></div>
+    <div class="card"><span class="muted">Tracked Events</span><b id="totalEvents">0</b></div>
+  </div>
+
+  <section class="panel">
+    <h3>Most-clicked services</h3>
+    <div id="services" style="padding:18px"></div>
+  </section>
+
+  <section class="panel">
+    <h3>Recent Leads</h3>
+    <table class="table"><thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Service</th><th>Message</th><th>Status</th><th>Action</th></tr></thead><tbody id="leads"></tbody></table>
+  </section>
+
+  <section class="panel">
+    <h3>Recent Website Events</h3>
+    <table class="table"><thead><tr><th>Date</th><th>Event</th><th>Section</th><th>Session</th></tr></thead><tbody id="events"></tbody></table>
+  </section>
+</main>
+</div>
+
+<script src="/admin/admin.js"></script>
+</body>
+</html>
