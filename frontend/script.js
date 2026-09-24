@@ -1,4 +1,4 @@
-const API_BASE = window.NORCIA_API_BASE || "http://localhost:5000/api";
+const API_BASE = window.NORCIA_API_BASE || "https://norcia-finance-backend.onrender.com/api";
 
 const menu = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#main-nav');
