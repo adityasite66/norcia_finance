@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CIBIL Rectification | Norcia Finance</title>
+
+  <meta
+    name="description"
+    content="Norcia Finance provides CIBIL Rectification assistance for identifying and correcting eligible credit report discrepancies."
+  >
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:Inter,Arial,sans-serif;color:#111;line-height:1.6}
+    a{text-decoration:none;color:inherit}
+    .container{width:min(1120px,92%);margin:auto}
+
+    header{position:sticky;top:0;z-index:1000;background:#fff;border-bottom:1px solid #eee}
+    .nav{min-height:74px;display:flex;align-items:center;justify-content:space-between}
+    .logo img{width:125px;height:auto;display:block;object-fit:contain}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+
+    .back-btn{
+      padding:10px 17px;
+      border:1px solid #ddd;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:600
+    }
+
+    .call-btn{
+      padding:11px 19px;
+      background:#b40000;
+      color:#fff;
+      border-radius:8px;
+      font-size:14px;
+      font-weight:700
+    }
+
+    .hero{
+      padding:90px 0;
+      color:#fff;
+      background:linear-gradient(135deg,#700000,#b40000 55%,#111)
+    }
+
+    .hero-content{max-width:800px}
+
+    .badge{
+      display:inline-block;
+      padding:7px 13px;
+      border:1px solid rgba(255,255,255,.3);
+      border-radius:50px;
+      font-size:13px;
+      margin-bottom:20px
+    }
+
+    h1{
+      font-size:clamp(38px,6vw,65px);
+      line-height:1.05;
+      letter-spacing:-2px;
+      margin-bottom:20px
+    }
+
+    .hero p{
+      font-size:18px;
+      color:#f3f3f3;
+      max-width:700px;
+      margin-bottom:28px
+    }
+
+    .hero-btn,.cta-btn{
+      display:inline-block;
+      background:#fff;
+      color:#a00000;
+      padding:14px 22px;
+      border-radius:9px;
+      font-weight:800
+    }
+
+    section{padding:75px 0}
+
+    .trust{
+      background:#fafafa;
+      padding:28px 0
+    }
+
+    .trust-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px
+    }
+
+    .trust-item{text-align:center}
+    .trust-item strong{display:block}
+    .trust-item span{font-size:14px;color:#777}
+
+    .section-title{
+      max-width:760px;
+      margin-bottom:40px
+    }
+
+    .section-title span{
+      color:#b40000;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:1.5px
+    }
+
+    .section-title h2{
+      font-size:36px;
+      line-height:1.2;
+      margin:8px 0 12px
+    }
+
+    .section-title p{color:#666}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px
+    }
+
+    .card{
+      border:1px solid #e8e8e8;
+      border-radius:16px;
+      padding:28px;
+      box-shadow:0 10px 35px rgba(0,0,0,.05)
+    }
+
+    .number{
+      width:42px;
+      height:42px;
+      background:#b40000;
+      color:#fff;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      font-weight:800;
+      margin-bottom:18px
+    }
+
+    .card h3{margin-bottom:8px}
+    .card p{font-size:14px;color:#666}
+
+    .documents{
+      background:#111;
+      color:#fff
+    }
+
+    .documents .section-title p{color:#bbb}
+
+    .document-list{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:15px
+    }
+
+    .document{
+      background:#181818;
+      border:1px solid #333;
+      border-radius:12px;
+      padding:22px;
+      font-weight:600
+    }
+
+    .document:before{
+      content:"✓";
+      color:#ff4a4a;
+      margin-right:10px
+    }
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px
+    }
+
+    .process-card{
+      background:#fff5f5;
+      border-radius:15px;
+      padding:28px;
+      border:1px solid #f0dede
+    }
+
+    .process-card strong{
+      display:block;
+      color:#b40000;
+      margin-bottom:8px
+    }
+
+    .time-box{
+      margin-top:30px;
+      padding:24px;
+      background:#fff5f5;
+      border-left:4px solid #b40000;
+      border-radius:8px
+    }
+
+    .cta{
+      text-align:center;
+      background:#b40000;
+      color:#fff
+    }
+
+    .cta h2{
+      font-size:38px;
+      margin-bottom:10px
+    }
+
+    .cta p{
+      color:#f5dede;
+      margin-bottom:25px
+    }
+
+    footer{
+      background:#0b0b0b;
+      color:#aaa;
+      text-align:center;
+      padding:28px;
+      font-size:13px
+    }
+
+    @media(max-width:800px){
+      .logo img{width:115px}
+      .back-btn{display:none}
+      .call-btn{padding:10px 14px;font-size:13px}
+      .hero{padding:65px 0}
+      section{padding:55px 0}
+      .trust-grid,.cards,.document-list,.process{grid-template-columns:1fr}
+      .section-title h2{font-size:29px}
+      .cta h2{font-size:30px}
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Norcia Finance Logo">
+    </a>
+
+    <div class="nav-actions">
+      <a href="index.html" class="back-btn">← Back to Home</a>
+      <a href="tel:6396885589" class="call-btn">Call Now</a>
+    </div>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+
+      <span class="badge">Credit Report Assistance</span>
+
+      <h1>CIBIL Rectification</h1>
+
+      <p>
+        We review your CIBIL report to identify eligible discrepancies
+        and assist with the rectification process.
+      </p>
+
+      <a href="tel:6396885589" class="hero-btn">
+        Talk to Us
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="container trust-grid">
+
+    <div class="trust-item">
+      <strong>Report Review</strong>
+      <span>Identify issues in your credit report</span>
+    </div>
+
+    <div class="trust-item">
+      <strong>Rectification Assistance</strong>
+      <span>Help with eligible discrepancies</span>
+    </div>
+
+    <div class="trust-item">
+      <strong>NOC / Clear Documentation</strong>
+      <span>Provided after applicable process</span>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <span>Our Process</span>
+      <h2>How CIBIL rectification assistance works</h2>
+      <p>
+        We first understand the issue visible in the customer's
+        CIBIL report and then guide the rectification process.
+      </p>
+    </div>
+
+    <div class="process">
+
+      <div class="process-card">
+        <strong>01 — Check Report</strong>
+        We review the customer's CIBIL report to identify the issue.
+      </div>
+
+      <div class="process-card">
+        <strong>02 — Identify Discrepancy</strong>
+        If an incorrect loan or incorrect reporting is identified,
+        the case can be taken up for rectification assistance.
+      </div>
+
+      <div class="process-card">
+        <strong>03 — Rectification Process</strong>
+        We assist with the process of getting eligible incorrect
+        information corrected.
+      </div>
+
+    </div>
+
+    <div class="time-box">
+      <strong>Processing Time:</strong>
+      The CIBIL rectification process takes at least 30 days.
+    </div>
+
+  </div>
+</section>
+
+<section class="documents">
+  <div class="container">
+
+    <div class="section-title">
+      <span>Required Documents</span>
+      <h2>Documents required</h2>
+      <p>
+        Keep these documents ready for the CIBIL report review.
+      </p>
+    </div>
+
+    <div class="document-list">
+
+      <div class="document">Aadhaar Card</div>
+      <div class="document">PAN Card</div>
+      <div class="document">CIBIL Report</div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="section-title">
+      <span>Important</span>
+      <h2>What we help with</h2>
+      <p>
+        Examples of issues that may require rectification assistance.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="number">01</div>
+        <h3>Incorrect Loan Entry</h3>
+        <p>
+          Assistance where an incorrect loan appears in the CIBIL report.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">02</div>
+        <h3>Incorrect Reporting</h3>
+        <p>
+          Assistance where a loan paid on time has been reported incorrectly.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="number">03</div>
+        <h3>Clear / NOC</h3>
+        <p>
+          After the applicable process, clear documentation or NOC
+          can also be provided.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+
+    <h2>Need CIBIL Rectification Assistance?</h2>
+
+    <p>
+      Contact Norcia Finance to discuss your CIBIL report.
+    </p>
+
+    <a href="tel:6396885589" class="cta-btn">
+      Call 6396885589
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Norcia Finance. All Rights Reserved.
+</footer>
+
+</body>
+</html>
