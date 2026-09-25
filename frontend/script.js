@@ -1,3 +1,9 @@
+// Google Analytics 4
+function gaEvent(eventName, params = {}) {
+  if (typeof gtag === "function") {
+    gtag("event", eventName, params);
+  }
+}
 const API_BASE = window.NORCIA_API_BASE || "https://norcia-finance-backend.onrender.com/api";
 
 const menu = document.querySelector('.menu-toggle');
@@ -31,13 +37,24 @@ async function track(event, section = null, metadata = {}) {
 
 track("page_view", "home");
 
-document.querySelectorAll("a[href^='tel:']").forEach(a =>
-  a.addEventListener("click", () => track("phone_click", "contact"))
-);
-document.querySelectorAll("a[href*='wa.me']").forEach(a =>
-  a.addEventListener("click", () => track("whatsapp_click", "contact"))
-);
+document.querySelectorAll("a[href^='tel:']").forEach(a => {
+  a.addEventListener("click", () => {
+    track("phone_click", "contact");
 
+    gaEvent("phone_click", {
+      section: "contact"
+    });
+  });
+});
+document.querySelectorAll("a[href*='wa.me']").forEach(a => {
+  a.addEventListener("click", () => {
+    track("whatsapp_click", "contact");
+
+    gaEvent("whatsapp_click", {
+      section: "contact"
+    });
+  });
+});
 const trackedSections = document.querySelectorAll("main section[id]");
 if ("IntersectionObserver" in window) {
   const seen = new Set();
@@ -94,6 +111,9 @@ document.querySelector('#enquiry-form')?.addEventListener('submit', async (e) =>
     if (!response.ok) throw new Error(result.message || "Unable to submit enquiry.");
 
     track("enquiry_submitted", payload.service);
+    gaEvent("enquiry_submitted", {
+  service: payload.service
+});
 
     const text =
       `Hello Norcia Finance,%0A%0A` +
