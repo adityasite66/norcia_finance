@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gold Loan | Norcia Finance</title>
+
+  <meta
+    name="description"
+    content="Norcia Finance provides Gold Loan assistance in Roorkee with simple documentation and reliable financial support."
+  >
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      color: #111;
+      background: #fff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+    }
+
+    .nav {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 125px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .back-btn {
+      padding: 10px 17px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .back-btn:hover {
+      border-color: #b40000;
+      color: #b40000;
+    }
+
+    .call-btn {
+      padding: 11px 19px;
+      background: #b40000;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .call-btn:hover {
+      background: #8f0000;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,.14), transparent 25%),
+        linear-gradient(135deg, #700000, #b40000 55%, #111);
+      color: #fff;
+      padding: 90px 0;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 68px);
+      line-height: 1.05;
+      margin-bottom: 22px;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 18px;
+      color: #f4f4f4;
+      margin-bottom: 30px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: #fff;
+      color: #a00000;
+      padding: 14px 22px;
+      border-radius: 9px;
+      font-weight: 800;
+    }
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-title {
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    .section-title span {
+      color: #b40000;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      line-height: 1.2;
+      margin: 8px 0 12px;
+    }
+
+    .section-title p {
+      color: #666;
+    }
+
+    .trust {
+      background: #fafafa;
+      padding: 28px 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .trust-item {
+      text-align: center;
+      padding: 18px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .trust-item span {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 28px;
+      background: #fff;
+      box-shadow: 0 10px 35px rgba(0,0,0,.05);
+    }
+
+    .card-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: #b40000;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 9px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .documents {
+      background: #111;
+      color: #fff;
+    }
+
+    .documents .section-title p {
+      color: #bbb;
+    }
+
+    .document-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .document {
+      border: 1px solid #333;
+      background: #181818;
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    .document::before {
+      content: "✓";
+      color: #ff4a4a;
+      margin-right: 10px;
+    }
+
+    .highlight {
+      background: #fff5f5;
+      border-left: 4px solid #b40000;
+      padding: 25px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+
+    .cta {
+      text-align: center;
+      background: #b40000;
+      color: #fff;
+    }
+
+    .cta h2 {
+      font-size: 38px;
+      margin-bottom: 12px;
+    }
+
+    .cta p {
+      margin-bottom: 25px;
+      color: #f5dede;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: #a00000;
+      padding: 14px 24px;
+      border-radius: 9px;
+      font-weight: 800;
+    }
+
+    footer {
+      background: #0b0b0b;
+      color: #aaa;
+      text-align: center;
+      padding: 28px 0;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        min-height: 65px;
+      }
+
+      .logo img {
+        width: 115px;
+      }
+
+      .back-btn {
+        display: none;
+      }
+
+      .call-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .trust-grid,
+      .cards,
+      .document-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title h2 {
+        font-size: 29px;
+      }
+
+      .cta h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" alt="Norcia Finance Logo">
+    </a>
+
+    <div class="nav-actions">
+      <a href="index.html" class="back-btn">← Back to Home</a>
+      <a href="tel:6396885589" class="call-btn">Call Now</a>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+
+        <span class="badge">Gold Loan Assistance</span>
+
+        <h1>Gold Loan</h1>
+
+        <p>
+          Get financial support against your gold with a simple and
+          convenient loan process through Norcia Finance.
+        </p>
+
+        <a href="tel:6396885589" class="hero-btn">
+          Talk to Us
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="container trust-grid">
+
+      <div class="trust-item">
+        <strong>Simple Process</strong>
+        <span>Easy documentation and guidance</span>
+      </div>
+
+      <div class="trust-item">
+        <strong>Flexible Support</strong>
+        <span>Loan assistance based on eligibility</span>
+      </div>
+
+      <div class="trust-item">
+        <strong>Local Assistance</strong>
+        <span>Personal support in Roorkee</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="section-title">
+        <span>Gold Loan</span>
+        <h2>Financial support against your gold</h2>
+        <p>
+          We help customers understand the gold loan process,
+          documentation and eligibility requirements.
+        </p>
+      </div>
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>Gold Valuation</h3>
+          <p>
+            Gold value is assessed according to applicable valuation
+            and eligibility criteria.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>Loan Assistance</h3>
+          <p>
+            Eligible customers may receive around 75–80% of the
+            gold market value, subject to valuation and eligibility.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Simple Documentation</h3>
+          <p>
+            Keep the required identity and contact documents ready
+            to start the process.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section class="documents">
+    <div class="container">
+
+      <div class="section-title">
+        <span>Documents</span>
+        <h2>What you may need</h2>
+        <p>
+          Keep the following documents available for the Gold Loan process.
+        </p>
+      </div>
+
+      <div class="document-list">
+
+        <div class="document">
+          Aadhaar Card
+        </div>
+
+        <div class="document">
+          PAN Card
+        </div>
+
+        <div class="document">
+          Driving Licence / Passport or valid document
+        </div>
+
+        <div class="document">
+          Email ID
+        </div>
+
+        <div class="document">
+          Phone Number
+        </div>
+
+      </div>
+
+      <div class="highlight">
+        Loan amount is subject to gold valuation, applicable norms
+        and customer eligibility.
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+
+      <h2>Need a Gold Loan?</h2>
+
+      <p>
+        Contact Norcia Finance for guidance about your requirements.
+      </p>
+
+      <a href="tel:6396885589" class="cta-btn">
+        Call 6396885589
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Norcia Finance. All Rights Reserved.
+</footer>
+
+</body>
+</html>
+
+
+
+  
