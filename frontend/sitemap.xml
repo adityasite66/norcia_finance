@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://norcia-finance.vercel.app/</loc>
-  </url>
-</urlset>
+  <loc>https://norcia-finance.vercel.app/gold-loan.html</loc>
+</url>
+
+<url>
+  <loc>https://norcia-finance.vercel.app/home-loan.html</loc>
+</url>
+
+<url>
+  <loc>https://norcia-finance.vercel.app/personal-loan.html</loc>
+</url>
+
+<url>
+  <loc>https://norcia-finance.vercel.app/business-loan.html</loc>
+</url>
+
+<url>
+  <loc>https://norcia-finance.vercel.app/loan-against-property.html</loc>
+</url>
+
+<url>
+  <loc>https://norcia-finance.vercel.app/construction-loan.html</loc>
+</url>
+
+<url>
+  <loc>https://norcia-finance.vercel.app/cibil-rectification.html</loc>
+</url>
