@@ -2,6 +2,10 @@ import { neon } from "@neondatabase/serverless";
 
 const sql = neon(process.env.DATABASE_URL);
 
+function createId() {
+  return crypto.randomUUID();
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -16,11 +20,13 @@ export default async function handler(req, res) {
       });
     }
 
+    const id = createId();
+
     const result = await sql`
       INSERT INTO "Lead"
-        ("name", "phone", "service", "message", "sessionId")
+        ("id", "name", "phone", "service", "message", "sessionId")
       VALUES
-        (${name}, ${phone}, ${service}, ${message || null}, ${sessionId || null})
+        (${id}, ${name}, ${phone}, ${service}, ${message || null}, ${sessionId || null})
       RETURNING "id", "name", "phone", "service", "createdAt";
     `;
 
