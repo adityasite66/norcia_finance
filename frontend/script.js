@@ -101,7 +101,7 @@ document.querySelector('#enquiry-form')?.addEventListener('submit', async (e) =>
   submitButton.textContent = "Sending...";
 
   try {
-    const response = await fetch(`${API_BASE}/leads`, {
+    const response = await fetch("/api/leads", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify(payload)
