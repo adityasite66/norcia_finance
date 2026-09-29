@@ -24,9 +24,9 @@ export default async function handler(req, res) {
 
     const result = await sql`
       INSERT INTO "Lead"
-        ("id", "name", "phone", "service", "message", "sessionId")
+      ("id", "name", "phone", "service", "message", "sessionId", "updatedAt")
       VALUES
-        (${id}, ${name}, ${phone}, ${service}, ${message || null}, ${sessionId || null})
+        (${id}, ${name}, ${phone}, ${service}, ${message || null}, ${sessionId || null}, NOW())
       RETURNING "id", "name", "phone", "service", "createdAt";
     `;
 
