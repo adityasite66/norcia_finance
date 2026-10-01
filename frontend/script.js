@@ -160,3 +160,37 @@ googleLoginBtn?.addEventListener("click", async () => {
     alert("Google login failed. Please try again.");
   }
 });
+
+async function updateAuthUI() {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  const loginBtn = document.querySelector("#google-login-btn");
+  const userInfo = document.querySelector("#user-info");
+  const logoutBtn = document.querySelector("#logout-btn");
+
+  if (session?.user) {
+    const user = session.user;
+
+    loginBtn.style.display = "none";
+    userInfo.style.display = "inline-block";
+    logoutBtn.style.display = "inline-block";
+
+    userInfo.textContent =
+      `Welcome, ${user.user_metadata?.full_name || user.email}`;
+  } else {
+    loginBtn.style.display = "inline-block";
+    userInfo.style.display = "none";
+    logoutBtn.style.display = "none";
+  }
+}
+
+document.querySelector("#logout-btn")?.addEventListener("click", async () => {
+  await supabaseClient.auth.signOut();
+  await updateAuthUI();
+});
+
+supabaseClient.auth.onAuthStateChange(() => {
+  updateAuthUI();
+});
+
+updateAuthUI();
