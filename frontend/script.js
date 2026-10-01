@@ -1,4 +1,13 @@
 // Google Analytics 4
+const SUPABASE_URL = "https://ivxihstnzwdxooowziak.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_YaaOCE3MOtIcIUeoZPKvIQ_ll3OnrXy";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
+
+
 function gaEvent(eventName, params = {}) {
   if (typeof gtag === "function") {
     gtag("event", eventName, params);
@@ -134,3 +143,5 @@ document.querySelector('#enquiry-form')?.addEventListener('submit', async (e) =>
 });
 
 document.querySelector('#year').textContent = new Date().getFullYear();
+
+console.log("Supabase connected:", !!supabaseClient);
