@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Account | Norcia Finance</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #111;
+    }
+
+    header {
+      background: #b00000;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 45px;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .welcome {
+      background: white;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      margin-bottom: 25px;
+    }
+
+    .welcome h1 {
+      margin-bottom: 10px;
+    }
+
+    .welcome p {
+      color: #666;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 25px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      margin-bottom: 20px;
+    }
+
+    .loading {
+      color: #666;
+    }
+
+    .enquiry {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 15px;
+    }
+
+    .enquiry strong {
+      color: #b00000;
+    }
+
+    .status {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #eee;
+      font-size: 13px;
+    }
+
+    .logout-btn {
+      margin-top: 20px;
+      border: none;
+      background: #111;
+      color: white;
+      padding: 11px 20px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .login-message {
+      text-align: center;
+      padding: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html">
+      <img src="assets/logo.png" alt="Norcia Finance">
+    </a>
+
+    <a href="index.html">← Back to Website</a>
+  </header>
+
+  <main class="container">
+
+    <div id="login-message" class="card login-message" style="display:none;">
+      <h2>Please login first</h2>
+      <p>You need to login with Google to view your account.</p>
+      <br>
+      <a href="index.html">Go to Website</a>
+    </div>
+
+    <div id="dashboard" style="display:none;">
+
+      <section class="welcome">
+        <h1>My Account</h1>
+        <p id="user-email"></p>
+
+        <button id="logout-btn" class="logout-btn">
+          Logout
+        </button>
+      </section>
+
+      <section class="card">
+        <h2>My Enquiries</h2>
+
+        <div id="enquiries">
+          <p class="loading">Loading your enquiries...</p>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const SUPABASE_URL =
+      "https://ivxihstnzwdxooowziak.supabase.co";
+
+    const SUPABASE_ANON_KEY =
+      "sb_publishable_YaaOCE3MOtIcIUeoZPKvIQ_ll3OnrXy";
+
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+      );
+
+    async function loadDashboard() {
+
+      const {
+        data: { session }
+      } = await supabaseClient.auth.getSession();
+
+      const loginMessage =
+        document.querySelector("#login-message");
+
+      const dashboard =
+        document.querySelector("#dashboard");
+
+      if (!session?.user) {
+        loginMessage.style.display = "block";
+        dashboard.style.display = "none";
+        return;
+      }
+
+      loginMessage.style.display = "none";
+      dashboard.style.display = "block";
+
+      const user = session.user;
+
+      document.querySelector("#user-email").textContent =
+        user.email || "";
+
+      const response = await fetch("/api/my-enquiries", {
+  headers: {
+    "x-user-id": user.id
+  }
+});
+
+const result = await response.json();
+
+const enquiriesBox = document.querySelector("#enquiries");
+
+if (!response.ok) {
+  enquiriesBox.innerHTML =
+    "<p>Unable to load your enquiries.</p>";
+  return;
+}
+
+if (!result.enquiries?.length) {
+  enquiriesBox.innerHTML =
+    "<p>You have not submitted any enquiries yet.</p>";
+  return;
+}
+
+enquiriesBox.innerHTML = result.enquiries.map(enquiry => `
+  <div class="enquiry">
+    <p><strong>Service:</strong> ${enquiry.service || "—"}</p>
+    <p><strong>Message:</strong> ${enquiry.message || "—"}</p>
+    <p><strong>Date:</strong> ${
+      new Date(enquiry.createdAt).toLocaleDateString("en-IN")
+    }</p>
+    <span class="status">
+      ${enquiry.status || "NEW"}
+    </span>
+  </div>
+`).join("");
+    }
+
+    document
+      .querySelector("#logout-btn")
+      ?.addEventListener("click", async () => {
+
+        await supabaseClient.auth.signOut();
+
+        window.location.href = "index.html";
+      });
+
+    loadDashboard();
+  </script>
+
+</body>
+</html>
