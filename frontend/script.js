@@ -145,3 +145,18 @@ document.querySelector('#enquiry-form')?.addEventListener('submit', async (e) =>
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 console.log("Supabase connected:", !!supabaseClient);
+const googleLoginBtn = document.querySelector("#google-login-btn");
+
+googleLoginBtn?.addEventListener("click", async () => {
+  const { error } = await supabaseClient.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: window.location.origin
+    }
+  });
+
+  if (error) {
+    console.error("Google login error:", error);
+    alert("Google login failed. Please try again.");
+  }
+});
