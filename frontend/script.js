@@ -93,13 +93,16 @@ document.querySelector('#enquiry-form')?.addEventListener('submit', async (e) =>
   const form = e.currentTarget;
   const submitButton = form.querySelector("button[type='submit']");
   const data = new FormData(form);
-  const payload = {
-    name: String(data.get('name') || '').trim(),
-    phone: String(data.get('phone') || '').trim(),
-    service: String(data.get('service') || '').trim(),
-    message: String(data.get('message') || '').trim(),
-    sessionId
-  };
+ const { data: { session } } = await supabaseClient.auth.getSession();
+
+const payload = {
+  name: String(data.get('name') || '').trim(),
+  phone: String(data.get('phone') || '').trim(),
+  service: String(data.get('service') || '').trim(),
+  message: String(data.get('message') || '').trim(),
+  sessionId,
+  userId: session?.user?.id || null
+};
 
   if (!/^[0-9+\-\s()]{7,20}$/.test(payload.phone)) {
     alert("Please enter a valid phone number.");
