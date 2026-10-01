@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, phone, service, message, sessionId } = req.body || {};
-
+    
+const { name, phone, service, message, sessionId, userId } = req.body || {};
     if (!name || !phone || !service) {
       return res.status(400).json({
         error: "Name, phone and service are required"
@@ -23,12 +23,12 @@ export default async function handler(req, res) {
     const id = createId();
 
     const result = await sql`
-      INSERT INTO "Lead"
-      ("id", "name", "phone", "service", "message", "sessionId", "updatedAt")
-      VALUES
-        (${id}, ${name}, ${phone}, ${service}, ${message || null}, ${sessionId || null}, NOW())
-      RETURNING "id", "name", "phone", "service", "createdAt";
-    `;
+  INSERT INTO "Lead"
+    ("id", "name", "phone", "service", "message", "sessionId", "userId", "updatedAt")
+  VALUES
+    (${id}, ${name}, ${phone}, ${service}, ${message || null}, ${sessionId || null}, ${userId || null}, NOW())
+  RETURNING "id", "name", "phone", "service", "createdAt";
+`;
 
     return res.status(201).json({
       success: true,
