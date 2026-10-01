@@ -29,6 +29,7 @@ model Lead {
   service   String?
   message   String?
   sessionId String?
+  userId    String?
   status    LeadStatus @default(NEW)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
