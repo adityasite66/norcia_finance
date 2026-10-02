@@ -1440,3 +1440,15 @@ textarea {
     white-space: nowrap;
   }
 }
+/* Make Get in Touch same size as Google Login */
+@media (min-width: 981px) {
+  .site-header .nav-cta,
+  .site-header #google-login-btn {
+    width: 215px !important;
+    height: 110px !important;
+    min-height: 110px !important;
+    padding: 20px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+}
