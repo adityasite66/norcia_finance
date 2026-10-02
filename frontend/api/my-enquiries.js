@@ -31,12 +31,19 @@ export default async function handler(req, res) {
         }
       }
     );
+if (!userResponse.ok) {
+  const authError = await userResponse.text();
 
-    if (!userResponse.ok) {
-      return res.status(401).json({
-        error: "Invalid authentication"
-      });
-    }
+  console.error(
+    "Supabase auth verification failed:",
+    userResponse.status,
+    authError
+  );
+
+  return res.status(401).json({
+    error: "Invalid authentication"
+  });
+}
 
     const user = await userResponse.json();
 
