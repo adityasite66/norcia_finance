@@ -591,3 +591,117 @@ footer a:hover {
     width: 115px;
   }
 }
+/* ================================
+   MOBILE HEADER FIX
+   ================================ */
+
+@media (max-width: 768px) {
+
+  .site-header {
+    padding: 10px 16px;
+  }
+
+  .nav-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* Logo / Brand */
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .brand img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .brand-copy {
+    min-width: 0;
+  }
+
+  .brand-copy strong {
+    display: block;
+    font-size: 20px;
+    line-height: 1.05;
+    white-space: nowrap;
+  }
+
+  .brand-copy small {
+    display: block;
+    font-size: 10px;
+    line-height: 1.2;
+    margin-top: 3px;
+    white-space: nowrap;
+  }
+
+  /* Hamburger */
+  .menu-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border: 0;
+    border-radius: 10px;
+    background: #b00000;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  /* Hide desktop navigation */
+  #main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 16px 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+    z-index: 9999;
+  }
+
+  /* Navigation when menu is opened */
+  #main-nav.open {
+    display: flex;
+  }
+
+  #main-nav a {
+    display: block;
+    width: 100%;
+    padding: 13px 12px;
+    text-align: left;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+  }
+
+  #main-nav a:last-child {
+    border-bottom: none;
+  }
+
+  /* Hide Get in Touch on mobile header */
+  .nav-cta {
+    display: none;
+  }
+
+  /* Header needs to be anchor for dropdown */
+  .site-header {
+    position: relative;
+    z-index: 10000;
+  }
+}
