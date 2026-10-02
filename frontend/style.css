@@ -1451,3 +1451,18 @@ textarea {
     box-sizing: border-box !important;
   }
 }
+/* FINAL: Small header buttons */
+@media (min-width: 981px) {
+  .site-header .nav-cta,
+  .site-header #google-login-btn {
+    width: 170px !important;
+    height: 70px !important;
+    min-height: 70px !important;
+    padding: 10px 15px !important;
+    margin: 0 5px !important;
+    box-sizing: border-box !important;
+    border-radius: 18px !important;
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+  }
+}
