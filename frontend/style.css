@@ -1419,3 +1419,24 @@ textarea {
     flex-basis: 40px !important;
   }
 }
+/* FIX: Header brand and navigation spacing */
+@media (min-width: 981px) {
+  .nav-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  .brand {
+    flex: 0 0 auto !important;
+    margin-right: 45px !important;
+  }
+
+  #main-nav {
+    flex: 1;
+    margin-left: 0 !important;
+  }
+
+  #main-nav a {
+    white-space: nowrap;
+  }
+}
