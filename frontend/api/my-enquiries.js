@@ -1,6 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 
 const sql = neon(process.env.DATABASE_URL);
+const SUPABASE_URL = "https://ivxihstnzwdxooowziak.supabase.co";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
@@ -23,7 +24,7 @@ export default async function handler(req, res) {
 
     // Supabase se token verify karo
     const userResponse = await fetch(
-      `${process.env.SUPABASE_URL}/auth/v1/user`,
+      `${SUPABASE_URL}/auth/v1/user`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
